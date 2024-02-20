@@ -38,11 +38,10 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4">
-                                <form action="http://127.0.0.1:8080/tags/1" method="POST">
-                                    <input type="hidden" name="_token"
-                                        value="mOpS9nSEHyjqS3CJ104vVcHLwbyRBUW27VnCxOuM" autocomplete="off"> <input
-                                        type="hidden" name="_method" value="delete"> <a
-                                        href="http://127.0.0.1:8080/tags/1/edit" class="mr-2">
+                                <form action="{{ route('tags.destroy', $item) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <a href="{{ route('tags.edit', $item) }}" class="mr-2">
                                         <i class="fas fa-edit text-green-400 hover:text-2xl"></i>
                                     </a>
                                     <button type="submit">

@@ -193,36 +193,39 @@
     <!-- MODAL para detalle -->
     @isset($producto->nombre)
         <x-dialog-modal wire:model="openShow">
-            <x-slot name="title">
-                Detalle Producto
-            </x-slot>
-            <x-slot name="content">
-                <div
-                    class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-                    <img class="rounded-t-lg" src="{{ Storage::url($producto->imagen) }}" alt="" />
-                    <div class="p-5">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                            {{ $producto->nombre }}
-                        </h5>
-                        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                            {{ $producto->descripcion }}
-                        </p>
-                        <div>
-                            @foreach ($producto->tags as $tag)
-                                <div style="background-color: {{ $tag->color }}">
-                                    {{ $tag->nombre }}
-                                </div>
-                            @endforeach
+            <div class="px-6 py-4">
+                <x-slot name="title">
+                    Detalle Producto
+                </x-slot>
+                <x-slot name="content">
+                    <div class="w-full mx-auto bg-white border border-gray-200 rounded-lg shadow">
+                        <img class="rounded-lg bg-cover bg-center bg-no-repeat w-full"
+                            src="{{ Storage::url($producto->imagen) }}" alt="">
+                        <div class="p-5">
+                            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                                {{ $producto->nombre }}
+                            </h5>
+                            <p class="mb-3 font-normal text-gray-700">
+                                {{ $producto->descripcion }}
+                            </p>
+
+                            <div class="flex flex-wrap mt-4">
+                                @foreach ($producto->tags as $tag)
+                                    <div class="p-1 rounded-lg mr-1" style="background-color: {{ $tag->color }}">
+                                        {{ $tag->nombre }}
+                                    </div>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-                </div>
-            </x-slot>
-            <x-slot name="footer">
-                <button wire:click="cancelarDetalle"
-                    class="mr-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                    <i class="fas fa-xmark"></i> CANCELAR
-                </button>
-            </x-slot>
+                </x-slot>
+                <x-slot name="footer">
+                    <button wire:click="cancelarDetalle"
+                        class="mr-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                        <i class="fas fa-xmark"></i> CANCELAR
+                    </button>
+                </x-slot>
+            </div>
         </x-dialog-modal>
     @endisset
 </x-principal>
