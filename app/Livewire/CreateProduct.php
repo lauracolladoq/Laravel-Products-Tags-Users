@@ -41,6 +41,7 @@ class CreateProduct extends Component
 
     public function store()
     {
+        //$this->nombre = ucfirst($this->nombre);
         $this->validate();
 
         $producto = Product::create([

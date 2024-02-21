@@ -23,7 +23,8 @@ class Tag extends Model
     public function nombre(): Attribute
     {
         return Attribute::make(
-            set: fn ($v) => strtolower("#$v")
+            get: fn($v)=>"#".$v,
+            set : fn($v)=>strtolower($v)
         );
     }
 }

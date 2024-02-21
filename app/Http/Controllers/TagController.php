@@ -32,7 +32,7 @@ class TagController extends Controller
     {
         $request->validate([
             'nombre' => ['required', 'string', 'min:3', 'unique:tags,nombre'],
-            'color' => ['required', new Hex()]
+            'color' => ['required', new Hex]
         ]);
 
         Tag::create($request->all());

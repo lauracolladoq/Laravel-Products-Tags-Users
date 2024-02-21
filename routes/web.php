@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\Socialite\GitHubController;
 use App\Http\Controllers\TagController;
 use App\Livewire\ShowProducts;
@@ -39,4 +40,7 @@ Route::middleware([
 });
 
 Route::get('/auth/github/redirect', [GitHubController::class, 'redirect'])->name('github.redirect');
-Route::get('/auth/github/callback',[GitHubController::class, 'callback'])->name('github.callback');
+Route::get('/auth/github/callback', [GitHubController::class, 'callback'])->name('github.callback');
+
+Route::get('contacto', [ContactoController::class, 'pintarFormulario'])->name('contacto.pintar');
+Route::post('contacto', [ContactoController::class, 'procesarFormulario'])->name('contacto.procesar');
